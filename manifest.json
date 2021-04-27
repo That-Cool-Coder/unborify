@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "name": "Unborify",
+    "version": "0.2.0",
+    "description": "Makes your browser less boring",
+    "permissions": ["declarativeContent", "storage", "tabs", "*://*/*"],
+    "browser_action": {
+        "default_title": "Unborify",
+        "default_popup": "settings/index.html"
+    },
+    "icons": {
+        "16": "icon16.png",
+        "32": "icon32.png",
+        "48": "icon48.png"
+    },
+    "background": {
+        "scripts": [
+            "wrk.js",
+            "unborifyActions/sayTrappedInComputer.js",
+            "unborifyActions/rickRoll.js",
+            "unborifyActions/makeRainbow.js",
+            "unborifyActions/reversePage.js",
+            "unborifyActions/rotatePage.js",
+            "unborifyActions/invertColors.js",
+            "unborifyActions/unborifyActions.js",
+            "background.js"],
+        "persistent": false
+    }
+}
