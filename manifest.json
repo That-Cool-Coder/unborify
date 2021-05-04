@@ -6,7 +6,7 @@
     "permissions": ["declarativeContent", "storage", "tabs", "*://*/*"],
     "browser_action": {
         "default_title": "Unborify",
-        "default_popup": "settings/index.html"
+        "default_popup": "settingsPopup/index.html"
     },
     "icons": {
         "16": "icon16.png",
@@ -23,7 +23,6 @@
             "unborifyActions/rotatePage.js",
             "unborifyActions/invertColors.js",
             "unborifyActions/unborifyActions.js",
-            "background.js"],
-        "persistent": false
+            "background.js"]
     }
 }

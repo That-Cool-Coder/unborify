@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Settings | Tab Livener</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="../icon16.png">
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <label for="activationCheckbox">Activated</label>
+        <input id="activationCheckbox" type="checkbox" checked>
+        <br>
+        <br>
+        <label for="intervalSizeInput">Do something every</label>
+        <input id="intervalSizeInput" type="number">
+        <select id="intervalUnitInput">
+            <option value="1">milliseconds</option>
+            <option value="1000">seconds</option>
+            <option value="60000">minutes</option>
+        </select>
+    </body>
+
+    <script src="/wrk.js"></script>
+    <script src="main.js"></script>
+</html>

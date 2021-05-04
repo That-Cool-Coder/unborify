@@ -8,12 +8,23 @@ function rotatePage() {
         // Inject the rotate script into the tab
         chrome.tabs.executeScript(null, {
             code: `
-            if (unborifyInterval != undefined) clearInterval(unborifyInterval);
-            var rotateSpeed = ${wrk.randflt(minRotateSpeed, maxRotateSpeed)};
-            var rotation = 0;
-            var unborifyInterval = setInterval(() => {
-                rotation += rotateSpeed;
-                document.body.style.transform = 'rotateZ(' + rotation + 'deg)';
+            if (_unborify_resetPage != undefined) _unborify_resetPage();
+
+            // This function needs to be inline - otherwise it's 'hoisted'
+            // by the parser and run before the line above
+            var _unborify_resetPage = function() {
+                clearInterval(_unborify_interval);
+                document.body.style.transform = _unborify_previousTransform;
+            }
+
+            // Save the transform before changing it so it can be reverted
+            var _unborify_previousTransform = document.body.style.transform;
+
+            var _unborify_rotateSpeed = ${wrk.randflt(minRotateSpeed, maxRotateSpeed)};
+            var _unborify_rotation = 0;
+            var _unborify_interval = setInterval(() => {
+                _unborify_rotation += _unborify_rotateSpeed;
+                document.body.style.transform = 'rotateZ(' + _unborify_rotation + 'deg)';
             }, 50);
             `
         });
