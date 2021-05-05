@@ -22,6 +22,7 @@
             "unborifyActions/reversePage.js",
             "unborifyActions/rotatePage.js",
             "unborifyActions/invertColors.js",
+            "unborifyActions/resetPage.js",
             "unborifyActions/unborifyActions.js",
             "background.js"]
     }

@@ -10,7 +10,7 @@ function rotatePage() {
             code: `
             if (_unborify_resetPage != undefined) _unborify_resetPage();
 
-            // This function needs to be inline - otherwise it's 'hoisted'
+            // This function needs to be declared inline - otherwise it's 'hoisted'
             // by the parser and run before the line above
             var _unborify_resetPage = function() {
                 clearInterval(_unborify_interval);

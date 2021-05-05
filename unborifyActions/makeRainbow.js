@@ -11,21 +11,22 @@ function makeRainbow() {
             code: `
             if (_unborify_resetPage != undefined) _unborify_resetPage();
             
-            // This function needs to be inline - otherwise it's 'hoisted'
+            // This function needs to be declared inline - otherwise it's 'hoisted'
             // by the parser and run before the line above
             var _unborify_resetPage = function() {
                 for (var elem of _unborify_initialElementStyles) {
+                    console.log(elem.style)
                     for (var key in elem.style) {
                         elem.element.style[key] = elem.style[key];
                     }
                 }
             }
 
-            var propertiesToMakeRainbow = [
-                'color', 'backgroundColor', 'borderColor'
+            var _unborify_propertiesToMakeRainbow = [
+                'color'//, 'backgroundColor', 'borderColor'
             ];
             
-            function randomHexColor() {
+            function _unborify_randomHexColor() {
                 return '#'+ Math.floor(Math.random()*16777215).toString(16);
             }
     
@@ -33,13 +34,15 @@ function makeRainbow() {
 
             ([...document.querySelectorAll('*')]).forEach((elem, i) => {
                 var crntElementStyle = {element : elem, style : {}}
-                propertiesToMakeRainbow.forEach(property => {
+                
+                _unborify_propertiesToMakeRainbow.forEach(property => {
                     // Save the original style data so we can reset
-                    crntElementStyle.element.style[property] =
+                    crntElementStyle.style[property] =
                         window.getComputedStyle(elem, null).getPropertyValue(property);
                     
-                    elem.style[property] = randomHexColor();
+                    elem.style[property] = _unborify_randomHexColor();
                 });
+                
                 _unborify_initialElementStyles.push(crntElementStyle);
             });
             `
